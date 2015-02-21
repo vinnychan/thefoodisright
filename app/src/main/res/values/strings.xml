@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">The Food is Right</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="game_title">Pick the lower calorie item!</string>
     <string name="action_settings">Settings</string>
 
 </resources>
