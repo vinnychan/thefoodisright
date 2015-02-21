@@ -30,22 +30,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/foodButton1"
         android:src="@drawable/foodleftsm"
-        android:layout_alignTop="@+id/foodButton2"
+        android:onClick="onButtonClick"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/gameTitle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
-        android:onClick="onButtonClick" />
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/foodButton2"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:src="@drawable/foodright"
-        android:onClick="onButtonClick" />
+        android:onClick="onButtonClick"
+        android:layout_above="@+id/foodText2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="match_parent"
@@ -53,11 +52,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/foodText1"
-        android:layout_below="@+id/foodButton1"
         android:layout_alignRight="@+id/foodButton1"
         android:layout_alignEnd="@+id/foodButton1"
-        android:layout_marginTop="31dp"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:layout_below="@+id/foodButton1"
+        android:layout_alignParentBottom="true" />
 
     <TextView
         android:layout_width="match_parent"
@@ -68,7 +67,8 @@
         android:layout_alignTop="@+id/foodText1"
         android:layout_alignLeft="@+id/foodButton2"
         android:layout_alignStart="@+id/foodButton2"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:layout_alignBottom="@+id/foodText1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
         android:layout_alignRight="@+id/gameTitle"
         android:layout_alignEnd="@+id/gameTitle"
         android:layout_below="@+id/gameTitle"
-        android:layout_alignLeft="@+id/gameTitle"
-        android:layout_alignStart="@+id/gameTitle" />
+        android:layout_toRightOf="@+id/foodText1"
+        android:layout_toEndOf="@+id/foodText1" />
 
 </RelativeLayout>

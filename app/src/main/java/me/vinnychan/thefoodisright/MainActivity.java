@@ -21,13 +21,13 @@ public class MainActivity extends ActionBarActivity {
             "legumes",
             "snack"
     };
+
     ArrayList<Foods> scoreList;
     int s = 0;
     Random ran1, ran2;
     TextView text1, text2, score;
     int x, y, num1, num2;
-    String a,b;
-    String sp = "legumes";
+    String a,b,sp;
     InputStream inputStream;
     CSVFile csvFile;
     @Override
@@ -74,9 +74,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else{
-                inputStream = getResources().openRawResource(R.raw.snack);
-                csvFile = new CSVFile(inputStream);
-                scoreList = csvFile.read();
+            inputStream = getResources().openRawResource(R.raw.snack);
+            csvFile = new CSVFile(inputStream);
+            scoreList = csvFile.read();
 
         }
 
