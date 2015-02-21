@@ -5,7 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.InputStream;
 import java.util.List;
@@ -22,13 +25,13 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //listView = (ListView) findViewById(R.id.listView);
-        itemArrayAdapter = new ItemArrayAdapter(getApplicationContext(), R.layout.item_layout);
+        //itemArrayAdapter = new ItemArrayAdapter(getApplicationContext(), R.layout.item_layout);
 
         //Parcelable state = listView.onSaveInstanceState();
         //listView.setAdapter(itemArrayAdapter);
         //listView.onRestoreInstanceState(state);
 
-        InputStream inputStream = getResources().openRawResource(R.raw.stats);
+        InputStream inputStream = getResources().openRawResource(R.raw.legumes);
         CSVFile csvFile = new CSVFile(inputStream);
         scoreList = csvFile.read();
 
@@ -36,7 +39,28 @@ public class MainActivity extends ActionBarActivity {
         //    itemArrayAdapter.add(scoreData);
         //}
     }
+    public void onButtonClick(View v){
+        //2 result label - TextView
+        TextView text1 = (TextView)findViewById(R.id.foodText1);
+        TextView text2 = (TextView)findViewById(R.id.foodText2);
 
+        String a = scoreList.get(0)[0];
+        String b = scoreList.get(1)[0];
+
+        int num1 = Integer.parseInt(scoreList.get(0)[1]);
+        int num2 = Integer.parseInt(scoreList.get(1)[1]);
+
+        if (v.getId() == R.id.foodButton1){
+            text1.setText(a);
+
+        }
+        if (v.getId() == R.id.foodButton2){
+            text2.setText(b);
+        }
+
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
