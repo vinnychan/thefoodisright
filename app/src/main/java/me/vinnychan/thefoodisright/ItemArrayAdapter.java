@@ -1,4 +1,4 @@
-package me.vinnychan.testapp;
+package me.vinnychan.thefoodisright;
 
 import android.content.Context;
 import android.view.LayoutInflater;

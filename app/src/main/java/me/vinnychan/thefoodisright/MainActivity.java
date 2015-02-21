@@ -1,4 +1,4 @@
-package me.vinnychan.testapp;
+package me.vinnychan.thefoodisright;
 
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;

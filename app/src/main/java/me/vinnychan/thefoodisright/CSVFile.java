@@ -1,4 +1,4 @@
-package me.vinnychan.testapp;
+package me.vinnychan.thefoodisright;
 
 import java.io.BufferedReader;
 import java.io.IOException;
