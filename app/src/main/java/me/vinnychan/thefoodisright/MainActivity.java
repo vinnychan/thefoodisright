@@ -1,5 +1,6 @@
 package me.vinnychan.thefoodisright;
 
+import android.media.SoundPool;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,9 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -30,12 +41,21 @@ public class MainActivity extends ActionBarActivity {
     String a,b,sp;
     InputStream inputStream;
     CSVFile csvFile;
+    SoundPool soundPool;
+    int ringSound = -1;
+    int bangSound = -1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         spinnerSelect();
         initializeValue();
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        bangSound = soundPool.load(this, R.raw.sound2, 1);
+        ringSound = soundPool.load(this, R.raw.sound3, 1);
     }
 
     public void spinnerSelect(){
@@ -86,11 +106,19 @@ public class MainActivity extends ActionBarActivity {
         starterF(sp);
         //2 result label - TextView
         if (v.getId() == R.id.foodButton1){
-            if(x <= y){s += 100;}
-            else{s-= 100;}}
+            if(x <= y){s += 100;
+                soundPool.play(ringSound, 1, 1, 0, 0, 1);
+            }
+            else{s-= 100;
+                soundPool.play(bangSound, 1, 1, 0, 0, 1);
+            }}
         if (v.getId() == R.id.foodButton2){
-            if(y <= x){s+=100;}
-            else{s-=100;}}
+            if(y <= x){s+=100;
+                soundPool.play(ringSound, 1, 1, 0, 0, 1);
+            }
+            else{s-=100;
+                soundPool.play(bangSound, 1, 1, 0, 0, 1);
+            }}
         score.setText(s+"");
         x = ran1.nextInt(scoreList.size()-1);
         y = ran2.nextInt(scoreList.size()-1);
