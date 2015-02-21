@@ -13,6 +13,8 @@ import android.widget.Toast;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -45,11 +47,10 @@ public class MainActivity extends ActionBarActivity {
         foodButton1 = (ImageButton) findViewById(R.id.foodButton1);
         foodButton2 = (ImageButton) findViewById(R.id.foodButton2);
         foodText1 = (TextView) findViewById(R.id.foodText1);
-        foodText2  = (TextView) findViewById(R.id.foodText2);
+        foodText2 = (TextView) findViewById(R.id.foodText2);
         scoreText = (TextView) findViewById(R.id.scoreText);
         calorieText1 = (TextView) findViewById(R.id.calorieText1);
         calorieText2 = (TextView) findViewById(R.id.calorieText2);
-
 
 
         inputStream = getResources().openRawResource(R.raw.legumes);
@@ -60,21 +61,16 @@ public class MainActivity extends ActionBarActivity {
 
         foodButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               if (legumeList.get(food1).getCalorie() < legumeList.get(food2).getCalorie()) {
+                if (legumeList.get(food1).getCalorie() < legumeList.get(food2).getCalorie()) {
                     score += 100;
                 } else {
                     score -= 100;
-               }
-
-                calorieText1.setText(legumeList.get(food1).getCalorie()+"");
-                calorieText2.setText(legumeList.get(food2).getCalorie()+"");
-//
-//                try {
-//                    wait(2);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-               // resetCalorie();
+                }
+                setCalorie();
+                calorieText1.setVisibility(View.VISIBLE);
+                calorieText2.setVisibility(View.VISIBLE);
+                calorieText1.postDelayed(hide1, 1000);
+                calorieText2.postDelayed(hide2, 1000);
                 updateFood();
             }
         });
@@ -86,24 +82,35 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     score -= 100;
                 }
-                calorieText1.setText(legumeList.get(food1).getCalorie()+"");
-                calorieText2.setText(legumeList.get(food2).getCalorie()+"");
-//
-//                try {
-//                    wait(2);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-                // resetCalorie();
+                setCalorie();
+                calorieText1.setVisibility(View.VISIBLE);
+                calorieText2.setVisibility(View.VISIBLE);
+                calorieText1.postDelayed(hide1, 1000);
+                calorieText2.postDelayed(hide2, 1000);
                 updateFood();
             }
         });
     }
-//
-//    public void setCalorie(){
-//        calorieText1.setText(legumeList.get(food1).getCalorie()+"");
-//        calorieText2.setText(legumeList.get(food2).getCalorie()+"");
-//    }
+
+    Runnable hide1 = new Runnable() {
+        @Override
+        public void run() {
+            calorieText1.setVisibility(View.GONE);
+        }
+    };
+
+    Runnable hide2 = new Runnable() {
+        @Override
+        public void run() {
+            calorieText2.setVisibility(View.GONE);
+        }
+    };
+
+
+    public void setCalorie(){
+            calorieText1.setText(legumeList.get(food1).getCalorie()+"");
+            calorieText2.setText(legumeList.get(food2).getCalorie()+"");
+    }
 
     public void resetCalorie() {
         calorieText1.setText("");
