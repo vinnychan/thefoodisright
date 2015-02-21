@@ -1,5 +1,7 @@
 package me.vinnychan.thefoodisright;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,21 +18,19 @@ import java.util.Random;
 
 public class MainActivity extends ActionBarActivity {
 
-    Spinner spinnerDropDown;
-    String[] categories = {
-            "legumes",
-            "snack"
-    };
 
     public List<Legume> legumeList;
     ImageButton foodButton1, foodButton2;
-
+    SoundPool soundPool;
+    int correct = -1;
+    int wrong = -1;
     int food1, food2;
     int score = 0;
-
+    int lives = 10;
+    int bonus = 0;
     Random randomNumber1 = new Random();
     Random randomNumber2 = new Random();
-    TextView foodText1, foodText2, scoreText, calorieText1, calorieText2;
+    TextView foodText1, foodText2, scoreText, calorieText1, calorieText2, livesText;
 
     InputStream inputStream;
     CSVFile csvFile;
@@ -47,10 +47,14 @@ public class MainActivity extends ActionBarActivity {
         foodText1 = (TextView) findViewById(R.id.foodText1);
         foodText2  = (TextView) findViewById(R.id.foodText2);
         scoreText = (TextView) findViewById(R.id.scoreText);
+        livesText = (TextView) findViewById(R.id.livesText);
         calorieText1 = (TextView) findViewById(R.id.calorieText1);
         calorieText2 = (TextView) findViewById(R.id.calorieText2);
 
-
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        correct = soundPool.load(this, R.raw.correct, 1);
+        wrong = soundPool.load(this, R.raw.wrong, 1);
 
         inputStream = getResources().openRawResource(R.raw.legumes);
         csvFile = new CSVFile(inputStream);
@@ -61,9 +65,14 @@ public class MainActivity extends ActionBarActivity {
         foodButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                if (legumeList.get(food1).getCalorie() < legumeList.get(food2).getCalorie()) {
-                    score += 100;
+                   score = score + (100 + bonus);
+                   bonus = bonus + 10;
+                   soundPool.play(correct, 1, 1, 0, 0, 1);
                 } else {
-                    score -= 100;
+                   lives --;
+                   bonus = 0;
+                   soundPool.play(wrong, 1, 1, 0, 0, 1);
+
                }
 
                 calorieText1.setText(legumeList.get(food1).getCalorie()+"");
@@ -82,9 +91,13 @@ public class MainActivity extends ActionBarActivity {
         foodButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (legumeList.get(food2).getCalorie() < legumeList.get(food1).getCalorie()) {
-                    score += 100;
+                    score = score + (100 + bonus);
+                    bonus = bonus + 10;
+                    soundPool.play(correct, 1, 1, 0, 0, 1);
                 } else {
-                    score -= 100;
+                    lives --;
+                    bonus = 0;
+                    soundPool.play(wrong, 1, 1, 0, 0, 1);
                 }
                 calorieText1.setText(legumeList.get(food1).getCalorie()+"");
                 calorieText2.setText(legumeList.get(food2).getCalorie()+"");
@@ -105,10 +118,6 @@ public class MainActivity extends ActionBarActivity {
 //        calorieText2.setText(legumeList.get(food2).getCalorie()+"");
 //    }
 
-    public void resetCalorie() {
-        calorieText1.setText("");
-        calorieText2.setText("");
-    }
 
     public void updateFood() {
         food1 = randomNumber1.nextInt(legumeList.size() - 1);
@@ -121,14 +130,8 @@ public class MainActivity extends ActionBarActivity {
         foodText1.setText(legumeList.get(food1).getName());
         foodText2.setText(legumeList.get(food2).getName());
         scoreText.setText("" + score);
+        livesText.setText(""+ lives);
     }
-
-    public void spinnerSelect() {
-        //spinnerDropDown = (Spinner) findViewById(R.id.spinner);
-
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -165,7 +168,30 @@ public class MainActivity extends ActionBarActivity {
 
             updateFood();
         }
+        if (id == R.id.beverages_select) {
+            Toast.makeText(getBaseContext(), "You have selected: Beverages", Toast.LENGTH_SHORT).show();
+            inputStream = getResources().openRawResource(R.raw.beverages);
+            csvFile = new CSVFile(inputStream);
+            legumeList = csvFile.read();
 
+            updateFood();
+        }
+        if (id == R.id.fastFoods_select) {
+            Toast.makeText(getBaseContext(), "You have selected: Fast Foods", Toast.LENGTH_SHORT).show();
+            inputStream = getResources().openRawResource(R.raw.fastfoods);
+            csvFile = new CSVFile(inputStream);
+            legumeList = csvFile.read();
+
+            updateFood();
+        }
+        if (id == R.id.baked_select) {
+            Toast.makeText(getBaseContext(), "You have selected: Baked", Toast.LENGTH_SHORT).show();
+            inputStream = getResources().openRawResource(R.raw.snack);
+            csvFile = new CSVFile(inputStream);
+            legumeList = csvFile.read();
+
+            updateFood();
+        }
 
         return super.onOptionsItemSelected(item);
     }

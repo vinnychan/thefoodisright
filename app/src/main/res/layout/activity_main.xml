@@ -22,8 +22,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="0"
         android:id="@+id/scoreText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/score" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -91,8 +91,35 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Small Text"
         android:id="@+id/calorieText2"
-        android:layout_alignTop="@+id/scoreText"
-        android:layout_alignRight="@+id/foodText2"
-        android:layout_alignEnd="@+id/foodText2" />
+        android:layout_alignTop="@+id/calorieText1"
+        android:layout_alignLeft="@+id/foodText2"
+        android:layout_alignStart="@+id/foodText2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/score"
+        android:text="@string/score"
+        android:layout_alignTop="@+id/foodButton1"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/livesremain"
+        android:text="@string/lives"
+        android:layout_below="@+id/calorieText2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="10"
+        android:id="@+id/livesText"
+        android:layout_below="@+id/livesremain"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

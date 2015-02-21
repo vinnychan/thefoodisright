@@ -18,5 +18,17 @@
         android:title="@string/snacks"
         android:orderInCategory="300"
         app:showAsAction="never" />
+    <item android:id="@+id/baked_select"
+        android:title="@string/baked"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+    <item android:id="@+id/beverages_select"
+        android:title="@string/beverages"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+    <item android:id="@+id/fastFoods_select"
+        android:title="@string/fastFoods"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
 
 </menu>

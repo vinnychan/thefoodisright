@@ -6,5 +6,9 @@
     <string name="action_settings">Pick your category!</string>
     <string name="legumes">Legumes</string>
     <string name="snacks">Snacks</string>
-
+    <string name="baked">Baked</string>
+    <string name="fastFoods">Fast Foods</string>
+    <string name="beverages">Beverages</string>
+    <string name="score">SCORE</string>
+    <string name="lives">LIVES</string>
 </resources>
