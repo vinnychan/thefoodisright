@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
 
     Random randomNumber1 = new Random();
     Random randomNumber2 = new Random();
-    TextView foodText1, foodText2, scoreText;
+    TextView foodText1, foodText2, scoreText, calorieText1, calorieText2;
 
     InputStream inputStream;
     CSVFile csvFile;
@@ -47,6 +47,9 @@ public class MainActivity extends ActionBarActivity {
         foodText1 = (TextView) findViewById(R.id.foodText1);
         foodText2  = (TextView) findViewById(R.id.foodText2);
         scoreText = (TextView) findViewById(R.id.scoreText);
+        calorieText1 = (TextView) findViewById(R.id.calorieText1);
+        calorieText2 = (TextView) findViewById(R.id.calorieText2);
+
 
 
         inputStream = getResources().openRawResource(R.raw.legumes);
@@ -62,6 +65,16 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     score -= 100;
                }
+
+                calorieText1.setText(legumeList.get(food1).getCalorie()+"");
+                calorieText2.setText(legumeList.get(food2).getCalorie()+"");
+//
+//                try {
+//                    wait(2);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+               // resetCalorie();
                 updateFood();
             }
         });
@@ -73,9 +86,28 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     score -= 100;
                 }
+                calorieText1.setText(legumeList.get(food1).getCalorie()+"");
+                calorieText2.setText(legumeList.get(food2).getCalorie()+"");
+//
+//                try {
+//                    wait(2);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+                // resetCalorie();
                 updateFood();
             }
         });
+    }
+//
+//    public void setCalorie(){
+//        calorieText1.setText(legumeList.get(food1).getCalorie()+"");
+//        calorieText2.setText(legumeList.get(food2).getCalorie()+"");
+//    }
+
+    public void resetCalorie() {
+        calorieText1.setText("");
+        calorieText2.setText("");
     }
 
     public void updateFood() {
