@@ -53,8 +53,8 @@
         android:text="Medium Text"
         android:id="@+id/foodText1"
         android:layout_below="@+id/foodButton1"
-        android:layout_alignRight="@+id/foodButton1"
-        android:layout_alignEnd="@+id/foodButton1" />
+        android:layout_alignRight="@+id/calorieText1"
+        android:layout_alignEnd="@+id/calorieText1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
         android:text="Medium Text"
         android:id="@+id/foodText2"
         android:layout_alignTop="@+id/foodText1"
-        android:layout_alignLeft="@+id/foodButton2"
-        android:layout_alignStart="@+id/foodButton2" />
+        android:layout_toRightOf="@+id/gameTitle"
+        android:layout_toEndOf="@+id/gameTitle" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,5 +74,25 @@
         android:id="@+id/gameTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Small Text"
+        android:id="@+id/calorieText1"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/foodButton1"
+        android:layout_alignStart="@+id/foodButton1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Small Text"
+        android:id="@+id/calorieText2"
+        android:layout_alignTop="@+id/scoreText"
+        android:layout_alignRight="@+id/foodText2"
+        android:layout_alignEnd="@+id/foodText2" />
 
 </RelativeLayout>
