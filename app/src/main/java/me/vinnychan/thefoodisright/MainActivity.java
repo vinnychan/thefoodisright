@@ -1,40 +1,82 @@
 package me.vinnychan.thefoodisright;
 
-import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.io.InputStream;
 import java.util.List;
-
+import java.util.Random;
 
 public class MainActivity extends ActionBarActivity {
 
-    private ListView listView;
-    private ItemArrayAdapter itemArrayAdapter;
+    public List<Legume> legumeList;
+    ImageButton foodButton1, foodButton2;
+
+    int food1, food2;
+    int score = 0;
+
+    Random randomNumber1 = new Random();
+    Random randomNumber2 = new Random();
+    TextView foodText1, foodText2, scoreText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //listView = (ListView) findViewById(R.id.listView);
-        itemArrayAdapter = new ItemArrayAdapter(getApplicationContext(), R.layout.item_layout);
 
-        //Parcelable state = listView.onSaveInstanceState();
-        //listView.setAdapter(itemArrayAdapter);
-        //listView.onRestoreInstanceState(state);
+        foodButton1 = (ImageButton) findViewById(R.id.foodButton1);
+        foodButton2 = (ImageButton) findViewById(R.id.foodButton2);
+        foodText1 = (TextView) findViewById(R.id.foodText1);
+        foodText2  = (TextView) findViewById(R.id.foodText2);
+        scoreText = (TextView) findViewById(R.id.scoreText);
 
-        InputStream inputStream = getResources().openRawResource(R.raw.stats);
+        InputStream inputStream = getResources().openRawResource(R.raw.legumes);
         CSVFile csvFile = new CSVFile(inputStream);
-        List<String[]> scoreList = csvFile.read();
+        legumeList = csvFile.read();
 
-        for(String[] scoreData:scoreList ) {
-            itemArrayAdapter.add(scoreData);
-        }
+        updateFood();
+
+        foodButton1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               if (legumeList.get(food1).getCalorie() < legumeList.get(food2).getCalorie()) {
+                    score += 100;
+                } else {
+                    score -= 100;
+               }
+                updateFood();
+            }
+        });
+
+        foodButton2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (legumeList.get(food2).getCalorie() < legumeList.get(food1).getCalorie()) {
+                    score += 100;
+                } else {
+                    score -= 100;
+                }
+                updateFood();
+            }
+        });
     }
+
+    public void updateFood() {
+        food1 = randomNumber1.nextInt(legumeList.size() - 1);
+        food2 = randomNumber2.nextInt(legumeList.size() - 1);
+
+        while (food1 == food2) {
+            food2 = randomNumber2.nextInt(legumeList.size() - 1);
+        }
+
+        foodText1.setText(legumeList.get(food1).getName());
+        foodText2.setText(legumeList.get(food2).getName());
+        scoreText.setText("" + score);
+    }
+
 
 
     @Override

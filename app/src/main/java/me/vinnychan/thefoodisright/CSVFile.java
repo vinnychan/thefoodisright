@@ -11,17 +11,27 @@ public class CSVFile {
     InputStream inputStream;
 
     public CSVFile(InputStream inputStream){
+
         this.inputStream = inputStream;
     }
 
-    public List<String[]> read(){
-        List<String[]> resultList = new ArrayList<String[]>();
+    public List<Legume> read(){
+        List<Legume> resultList = new ArrayList<Legume>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
+
+            Legume legume;
+
             String csvLine;
             while ((csvLine = reader.readLine()) != null) {
+
+
                 String[] row = csvLine.split(",");
-                resultList.add(row);
+                double calorie = Double.parseDouble(row[1]);
+
+                legume = new Legume(row[0], calorie);
+
+                resultList.add(legume);
             }
         }
         catch (IOException ex) {
