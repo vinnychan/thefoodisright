@@ -1,5 +1,6 @@
 package me.vinnychan.thefoodisright;
 
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -49,6 +50,11 @@ public class MainActivity extends ActionBarActivity {
         scoreText = (TextView) findViewById(R.id.scoreText);
         calorieText1 = (TextView) findViewById(R.id.calorieText1);
         calorieText2 = (TextView) findViewById(R.id.calorieText2);
+
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/BradBunR.ttf");
+        calorieText1.setTypeface(face);
+        calorieText2.setTypeface(face);
+        scoreText.setTypeface(face);
 
 
 
