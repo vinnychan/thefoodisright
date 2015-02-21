@@ -5,29 +5,85 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends ActionBarActivity {
-
+    Spinner spinnerDropDown;
+    String[] cities = {
+            "legumes",
+            "snack"
+    };
     ArrayList<Foods> scoreList;
     int s = 0;
     Random ran1, ran2;
     TextView text1, text2, score;
     int x, y, num1, num2;
     String a,b;
+    String sp = "legumes";
+    InputStream inputStream;
+    CSVFile csvFile;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        InputStream inputStream = getResources().openRawResource(R.raw.legumes);
-        CSVFile csvFile = new CSVFile(inputStream);
-        scoreList = csvFile.read();
+        spinnerSelect();
         initializeValue();
     }
+
+    public void spinnerSelect(){
+        spinnerDropDown =(Spinner)findViewById(R.id.spinner1);
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.
+                R.layout.simple_spinner_dropdown_item ,cities);
+
+        spinnerDropDown.setAdapter(adapter);
+
+        spinnerDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // Get select item
+                int sid=spinnerDropDown.getSelectedItemPosition();
+                Toast.makeText(getBaseContext(), "You have selected: " + cities[sid],
+                        Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+
+        });
+        sp = spinnerDropDown.getSelectedItem().toString();
+        starterF(sp);
+    }
+
+    public void starterF(String f){
+        if (f.contentEquals("legumes")) {
+            inputStream = getResources().openRawResource(R.raw.legumes);
+            csvFile = new CSVFile(inputStream);
+            scoreList = csvFile.read();
+
+        }
+
+        else{
+                inputStream = getResources().openRawResource(R.raw.snack);
+                csvFile = new CSVFile(inputStream);
+                scoreList = csvFile.read();
+
+        }
+
+    }
     public void onButtonClick(View v){
+        sp = spinnerDropDown.getSelectedItem().toString();
+        starterF(sp);
         //2 result label - TextView
         if (v.getId() == R.id.foodButton1){
             if(x <= y){s += 100;}

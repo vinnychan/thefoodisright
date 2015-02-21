@@ -57,7 +57,7 @@
         android:layout_alignRight="@+id/foodButton1"
         android:layout_alignEnd="@+id/foodButton1"
         android:layout_marginTop="31dp"
-        android:layout_gravity="right|left" />
+        android:layout_gravity="right" />
 
     <TextView
         android:layout_width="match_parent"
@@ -78,5 +78,15 @@
         android:id="@+id/gameTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner1"
+        android:layout_alignRight="@+id/gameTitle"
+        android:layout_alignEnd="@+id/gameTitle"
+        android:layout_below="@+id/gameTitle"
+        android:layout_alignLeft="@+id/gameTitle"
+        android:layout_alignStart="@+id/gameTitle" />
 
 </RelativeLayout>
