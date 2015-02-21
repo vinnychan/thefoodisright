@@ -22,7 +22,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="0"
         android:id="@+id/scoreText"
-        android:textSize="80sp"
+        android:textSize="60sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
