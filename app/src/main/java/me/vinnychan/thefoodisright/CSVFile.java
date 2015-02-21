@@ -14,14 +14,14 @@ public class CSVFile {
         this.inputStream = inputStream;
     }
 
-    public List<String[]> read(){
-        List<String[]> resultList = new ArrayList<String[]>();
+    public ArrayList<Foods> read(){
+        ArrayList<Foods> resultList = new ArrayList<Foods>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String csvLine;
             while ((csvLine = reader.readLine()) != null) {
                 String[] row = csvLine.split(",");
-                resultList.add(row);
+                resultList.add(new Foods(row[0], row[1]));
             }
         }
         catch (IOException ex) {
