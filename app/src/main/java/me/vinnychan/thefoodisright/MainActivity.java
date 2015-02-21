@@ -15,6 +15,7 @@ public class MainActivity extends ActionBarActivity {
 
     private ListView listView;
     private ItemArrayAdapter itemArrayAdapter;
+    List<String[]> scoreList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,11 @@ public class MainActivity extends ActionBarActivity {
 
         InputStream inputStream = getResources().openRawResource(R.raw.stats);
         CSVFile csvFile = new CSVFile(inputStream);
-        List<String[]> scoreList = csvFile.read();
+        scoreList = csvFile.read();
 
-        for(String[] scoreData:scoreList ) {
-            itemArrayAdapter.add(scoreData);
-        }
+        //for(String[] scoreData:scoreList ) {
+        //    itemArrayAdapter.add(scoreData);
+        //}
     }
 
 
