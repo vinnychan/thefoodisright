@@ -6,7 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.util.List;
@@ -14,6 +16,11 @@ import java.util.Random;
 
 public class MainActivity extends ActionBarActivity {
 
+    Spinner spinnerDropDown;
+    String[] categories = {
+            "legumes",
+            "snack"
+    };
 
     public List<Legume> legumeList;
     ImageButton foodButton1, foodButton2;
@@ -24,6 +31,11 @@ public class MainActivity extends ActionBarActivity {
     Random randomNumber1 = new Random();
     Random randomNumber2 = new Random();
     TextView foodText1, foodText2, scoreText;
+
+    InputStream inputStream;
+    CSVFile csvFile;
+    //List<Legume> legumeList = csvFile.read();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +48,9 @@ public class MainActivity extends ActionBarActivity {
         foodText2  = (TextView) findViewById(R.id.foodText2);
         scoreText = (TextView) findViewById(R.id.scoreText);
 
-        InputStream inputStream = getResources().openRawResource(R.raw.legumes);
-        CSVFile csvFile = new CSVFile(inputStream);
+
+        inputStream = getResources().openRawResource(R.raw.legumes);
+        csvFile = new CSVFile(inputStream);
         legumeList = csvFile.read();
 
         updateFood();
@@ -78,6 +91,11 @@ public class MainActivity extends ActionBarActivity {
         scoreText.setText("" + score);
     }
 
+    public void spinnerSelect() {
+        //spinnerDropDown = (Spinner) findViewById(R.id.spinner);
+
+    }
+
 
 
     @Override
@@ -98,6 +116,24 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+        if (id == R.id.legume_select) {
+            Toast.makeText(getBaseContext(), "You have selected: Legumes", Toast.LENGTH_SHORT).show();
+            inputStream = getResources().openRawResource(R.raw.legumes);
+            csvFile = new CSVFile(inputStream);
+            legumeList = csvFile.read();
+
+            updateFood();
+        }
+        if (id == R.id.snacks_select) {
+            Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
+            inputStream = getResources().openRawResource(R.raw.snack);
+            csvFile = new CSVFile(inputStream);
+            legumeList = csvFile.read();
+
+            updateFood();
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
