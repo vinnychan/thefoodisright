@@ -15,12 +15,12 @@ public class CSVFile {
         this.inputStream = inputStream;
     }
 
-    public List<Legume> read(){
-        List<Legume> resultList = new ArrayList<Legume>();
+    public List<Food> read(){
+        List<Food> resultList = new ArrayList<Food>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
 
-            Legume legume;
+            Food food;
 
             String csvLine;
             while ((csvLine = reader.readLine()) != null) {
@@ -29,9 +29,9 @@ public class CSVFile {
                 String[] row = csvLine.split(",");
                 double calorie = Double.parseDouble(row[1]);
 
-                legume = new Legume(row[0], calorie);
+                food = new Food(row[0], calorie);
 
-                resultList.add(legume);
+                resultList.add(food);
             }
         }
         catch (IOException ex) {

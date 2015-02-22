@@ -9,20 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
 
-    public List<Legume> legumeList;
+    public List<Food> foodList;
     ImageButton foodButton1, foodButton2;
 
     SoundPool soundPool;
@@ -67,13 +64,13 @@ public class MainActivity extends ActionBarActivity {
 
         inputStream = getResources().openRawResource(R.raw.legumes);
         csvFile = new CSVFile(inputStream);
-        legumeList = csvFile.read();
+        foodList = csvFile.read();
 
         updateFood();
 
         foodButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (legumeList.get(food1).getCalorie() < legumeList.get(food2).getCalorie()) {
+                if (foodList.get(food1).getCalorie() < foodList.get(food2).getCalorie()) {
                     score += 100;
 
                     soundPool.play(correct, 1, 1, 0, 0, 1);
@@ -95,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
 
         foodButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (legumeList.get(food2).getCalorie() < legumeList.get(food1).getCalorie()) {
+                if (foodList.get(food2).getCalorie() < foodList.get(food1).getCalorie()) {
                     score += 100;
                     soundPool.play(correct, 1, 1, 0, 0, 1);
                 } else {
@@ -128,8 +125,8 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void setCalorie(){
-            calorieText1.setText(legumeList.get(food1).getCalorie()+"");
-            calorieText2.setText(legumeList.get(food2).getCalorie()+"");
+            calorieText1.setText(foodList.get(food1).getCalorie()+"");
+            calorieText2.setText(foodList.get(food2).getCalorie()+"");
     }
 
     public void resetCalorie() {
@@ -138,15 +135,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void updateFood() {
-        food1 = randomNumber1.nextInt(legumeList.size() - 1);
-        food2 = randomNumber2.nextInt(legumeList.size() - 1);
+        food1 = randomNumber1.nextInt(foodList.size() - 1);
+        food2 = randomNumber2.nextInt(foodList.size() - 1);
 
         while (food1 == food2) {
-            food2 = randomNumber2.nextInt(legumeList.size() - 1);
+            food2 = randomNumber2.nextInt(foodList.size() - 1);
         }
 
-        foodText1.setText(legumeList.get(food1).getName());
-        foodText2.setText(legumeList.get(food2).getName());
+        foodText1.setText(foodList.get(food1).getName());
+        foodText2.setText(foodList.get(food2).getName());
         scoreText.setText("" + score);
     }
 
@@ -175,7 +172,7 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(), "You have selected: Legumes", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.legumes);
             csvFile = new CSVFile(inputStream);
-            legumeList = csvFile.read();
+            foodList = csvFile.read();
 
             updateFood();
         }
@@ -183,7 +180,7 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.snack);
             csvFile = new CSVFile(inputStream);
-            legumeList = csvFile.read();
+            foodList = csvFile.read();
 
             updateFood();
         }
@@ -192,7 +189,7 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.beverages);
             csvFile = new CSVFile(inputStream);
-            legumeList = csvFile.read();
+            foodList = csvFile.read();
 
             updateFood();
         }
@@ -201,7 +198,7 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.fastfoods);
             csvFile = new CSVFile(inputStream);
-            legumeList = csvFile.read();
+            foodList = csvFile.read();
 
             updateFood();
         }
@@ -210,7 +207,7 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.baked);
             csvFile = new CSVFile(inputStream);
-            legumeList = csvFile.read();
+            foodList = csvFile.read();
 
             updateFood();
         }
