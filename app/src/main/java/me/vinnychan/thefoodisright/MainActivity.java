@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
     Reward reward;
     static int count;
     int lifeRewardCount;
-
+    Intent svc;
 
     Random randomNumber1 = new Random();
     Random randomNumber2 = new Random();
@@ -52,6 +52,9 @@ public class MainActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        svc=new Intent(this, BackgroundSoundService.class);
+        startService(svc);
 
         foodButton1 = (ImageButton) findViewById(R.id.foodButton1);
         foodButton2 = (ImageButton) findViewById(R.id.foodButton2);
@@ -156,6 +159,7 @@ public class MainActivity extends ActionBarActivity {
     public void checkGameOver(){
         if (lives==0){
             Intent i = new Intent(MainActivity.this, Gameover.class);
+            stopService(svc);
             startActivity(i);
             finish();
         }
