@@ -27,11 +27,6 @@
             android:screenOrientation="sensorLandscape" >
         </activity>
 
-        <ListActivity
-            android:name=".reward_list"
-            android:screenOrientation="sensorLandscape" >
-        </ListActivity>
-
         <activity
             android:name=".Credits"
             android:screenOrientation="sensorLandscape" >

@@ -67,6 +67,7 @@ public class MainActivity extends ActionBarActivity {
         checkImage = (ImageView) findViewById(R.id.checkImage);
         crossImage = (ImageView) findViewById(R.id.crossImage);
         statusText = (TextView) findViewById(R.id.statusText);
+        Reward.awards.add(0, "grape");
         reward = new Reward();
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);

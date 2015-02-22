@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_splash2"
+    android:background="@drawable/gameover_background"
     tools:context=".Gameover">
 
     <TextView
@@ -13,8 +13,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Game Over! Stay Healthy and watch the Calories!"
         android:id="@+id/gameOverText"
-        android:layout_marginTop="35dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/scoreText"
         android:layout_centerHorizontal="true" />
 
     <RadioButton
@@ -23,17 +22,17 @@
         android:text="Press to Restart!"
         android:id="@+id/restartButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/gameOverText"
-        android:layout_alignStart="@+id/gameOverText" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Credits"
         android:id="@+id/creditsButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/gameOverText"
-        android:layout_alignEnd="@+id/gameOverText" />
+        android:layout_alignTop="@+id/restartButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,8 +48,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/highScoreText"
         android:text="HighScore"
-        android:layout_above="@+id/restartButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/kiwiImage"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/kiwiImage"
+        android:layout_alignStart="@+id/kiwiImage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,8 +62,269 @@
         android:text="Large Text"
         android:id="@+id/rewardsText"
         android:layout_below="@+id/gameOverText"
-        android:layout_alignLeft="@+id/highScoreText"
-        android:layout_alignStart="@+id/highScoreText" />
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/broccoliImage"
+        android:src="@drawable/broccoli"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/rewardsText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/cucumberImage"
+        android:layout_alignTop="@+id/broccoliImage"
+        android:layout_toRightOf="@+id/broccoliImage"
+        android:layout_toEndOf="@+id/broccoliImage"
+        android:src="@drawable/cucumber" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/onionImage"
+        android:layout_alignTop="@+id/cucumberImage"
+        android:layout_toRightOf="@+id/cucumberImage"
+        android:layout_toEndOf="@+id/cucumberImage"
+        android:src="@drawable/onion" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/tomatoImage"
+        android:layout_alignTop="@+id/onionImage"
+        android:layout_toRightOf="@+id/onionImage"
+        android:layout_toEndOf="@+id/onionImage"
+        android:src="@drawable/tomato" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/pepperImage"
+        android:layout_alignTop="@+id/tomatoImage"
+        android:layout_toRightOf="@+id/tomatoImage"
+        android:layout_toEndOf="@+id/tomatoImage"
+        android:src="@drawable/pepper" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/avacadoImage"
+        android:layout_alignTop="@+id/pepperImage"
+        android:layout_toRightOf="@+id/pepperImage"
+        android:layout_toEndOf="@+id/pepperImage"
+        android:src="@drawable/avacado" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/appleImage"
+        android:layout_alignTop="@+id/avacadoImage"
+        android:layout_toRightOf="@+id/avacadoImage"
+        android:layout_toEndOf="@+id/avacadoImage"
+        android:src="@drawable/apple" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/kiwiImage"
+        android:layout_below="@+id/broccoliImage"
+        android:layout_alignLeft="@+id/broccoliImage"
+        android:layout_alignStart="@+id/broccoliImage"
+        android:src="@drawable/kiwi" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/watermelonImage"
+        android:layout_alignBottom="@+id/kiwiImage"
+        android:layout_toRightOf="@+id/kiwiImage"
+        android:layout_toEndOf="@+id/kiwiImage"
+        android:src="@drawable/watermelon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/coconutImage"
+        android:layout_alignBottom="@+id/watermelonImage"
+        android:layout_toRightOf="@+id/watermelonImage"
+        android:layout_toEndOf="@+id/watermelonImage"
+        android:src="@drawable/coconut" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/peachImage"
+        android:layout_alignBottom="@+id/coconutImage"
+        android:layout_toRightOf="@+id/coconutImage"
+        android:layout_toEndOf="@+id/coconutImage"
+        android:src="@drawable/peach" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/strawberryImage"
+        android:layout_alignBottom="@+id/peachImage"
+        android:layout_toRightOf="@+id/peachImage"
+        android:layout_toEndOf="@+id/peachImage"
+        android:src="@drawable/strawberry" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/bananaImage"
+        android:layout_alignBottom="@+id/strawberryImage"
+        android:layout_toRightOf="@+id/strawberryImage"
+        android:layout_toEndOf="@+id/strawberryImage"
+        android:src="@drawable/banana" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/pomegranateImage"
+        android:layout_alignBottom="@+id/bananaImage"
+        android:layout_toRightOf="@+id/bananaImage"
+        android:layout_toEndOf="@+id/bananaImage"
+        android:src="@drawable/pomegranate" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orangeImage"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/appleImage"
+        android:layout_toRightOf="@+id/appleImage"
+        android:layout_toEndOf="@+id/appleImage"
+        android:src="@drawable/orange" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lemonImage"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/orangeImage"
+        android:layout_toRightOf="@+id/orangeImage"
+        android:layout_toEndOf="@+id/orangeImage"
+        android:src="@drawable/lemon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pearImage"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/lemonImage"
+        android:layout_toRightOf="@+id/lemonImage"
+        android:layout_toEndOf="@+id/lemonImage"
+        android:src="@drawable/pear" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passionfruitImage"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/pomegranateImage"
+        android:layout_toRightOf="@+id/pomegranateImage"
+        android:layout_toEndOf="@+id/pomegranateImage"
+        android:src="@drawable/passionfruit" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/papayaImage"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/passionfruitImage"
+        android:layout_toRightOf="@+id/passionfruitImage"
+        android:layout_toEndOf="@+id/passionfruitImage"
+        android:src="@drawable/papaya" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/starfruitImage"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignBottom="@+id/papayaImage"
+        android:layout_toRightOf="@+id/papayaImage"
+        android:layout_toEndOf="@+id/papayaImage"
+        android:src="@drawable/starfruit" />
 
     <!--<RadioButton-->
         <!--android:layout_width="wrap_content"-->

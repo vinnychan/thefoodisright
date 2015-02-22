@@ -30,6 +30,7 @@ public class SplashScreen extends ActionBarActivity{
                 try {
                     sleep(5000);
                     Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                    MainActivity.lives = 10;
                     startActivity(i);
                     finish();
 
