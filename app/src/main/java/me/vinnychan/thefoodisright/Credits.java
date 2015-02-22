@@ -11,40 +11,30 @@ import android.widget.TextView;
 /**
  * Created by yves on 21/02/15.
  */
-public class Gameover extends ActionBarActivity{
-    TextView gameOverText;
+public class Credits extends ActionBarActivity {
+    TextView creditsText;
     RadioButton restartButton;
-    RadioButton creditsButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gameover);
+        setContentView(R.layout.credits);
 
-        gameOverText = (TextView) findViewById(R.id.gameOverText);
+        creditsText = (TextView) findViewById(R.id.creditsText);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/BradBunR.ttf");
-        gameOverText.setTypeface(face);
+        creditsText.setTypeface(face);
 
         restartButton = (RadioButton) findViewById(R.id.restartButton);
-        creditsButton = (RadioButton) findViewById(R.id.creditsButton);
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.lives = 10;
-                Intent i = new Intent(Gameover.this, MainActivity.class);
+                Intent i = new Intent(Credits.this, MainActivity.class);
                 startActivity(i);
                 finish();
 
             }
         });
 
-        creditsButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(Gameover.this, Credits.class);
-                startActivity(i);
-                finish();
-
-            }
-        });
     }
 
 }

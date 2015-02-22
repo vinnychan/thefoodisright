@@ -10,5 +10,6 @@
     <string name="fastfood">Fast Food</string>
     <string name="baked">Baked Foods</string>
     <string name="splash_title">The Food is Right</string>
+    <string name="credits">Created by: Vincent Chan,<br></br> Yves Chan,<br></br> Ha Nguyen</string>
 
 </resources>
