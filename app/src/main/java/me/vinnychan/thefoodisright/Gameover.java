@@ -15,8 +15,11 @@ public class Gameover extends ActionBarActivity{
     TextView gameOverText;
     TextView scoreText;
     TextView highScoreText;
+    TextView rewardsText;
     RadioButton restartButton;
     RadioButton creditsButton;
+
+   // RadioButton rewardsButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,22 +35,39 @@ public class Gameover extends ActionBarActivity{
         highScoreText = (TextView) findViewById(R.id.highScoreText);
         highScoreText.setTypeface(face);
 
+        rewardsText = (TextView) findViewById(R.id.rewardsText);
+        rewardsText.setTypeface(face);
+
         restartButton = (RadioButton) findViewById(R.id.restartButton);
         creditsButton = (RadioButton) findViewById(R.id.creditsButton);
+        //rewardsButton = (RadioButton) findViewById(R.id.rewardsButton);
+
 
         scoreText.setText("Good Job, your score was " +MainActivity.score);
         highScoreText.setText("Your best was " +MainActivity.highScore+" and you obtained " + Reward.status + " Status!!!");
+        rewardsText.setText("You collected "+ Reward.awards +" out of"+ Reward.statuses.length +" fruits");
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.lives = 10;
                 MainActivity.score = 0;
+                MainActivity.count = 0;
+                Reward.awards = 1;
                 Intent i = new Intent(Gameover.this, MainActivity.class);
                 startActivity(i);
                 finish();
 
             }
         });
+
+//        rewardsButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent i = new Intent(Gameover.this, RewardList.class);
+//                startActivity(i);
+//                finish();
+//
+//            }
+//        });
 
         creditsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

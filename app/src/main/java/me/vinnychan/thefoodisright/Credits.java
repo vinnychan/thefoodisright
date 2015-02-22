@@ -29,6 +29,8 @@ public class Credits extends ActionBarActivity {
             public void onClick(View v) {
                 MainActivity.lives = 10;
                 MainActivity.score = 0;
+                MainActivity.count = 0;
+                Reward.awards = 1;
                 Intent i = new Intent(Credits.this, MainActivity.class);
                 startActivity(i);
                 finish();
