@@ -20,7 +20,7 @@ public class Reward extends MainActivity {
 
 
     public void upgrade(int count) {
-        if ((count % 5 == 0) && (count<=85)){
+        if ((count%5 == 0) && (count<=85)){
             int n = (count/5);
             status = statuses[n];
             MainActivity.setStatusText("You are a " + status);

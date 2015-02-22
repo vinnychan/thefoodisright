@@ -40,7 +40,7 @@ public class Gameover extends ActionBarActivity{
 
         restartButton = (RadioButton) findViewById(R.id.restartButton);
         creditsButton = (RadioButton) findViewById(R.id.creditsButton);
-        //rewardsButton = (RadioButton) findViewById(R.id.rewardsButton);
+       // rewardsButton = (RadioButton) findViewById(R.id.rewardsButton);
 
 
         scoreText.setText("Good Job, your score was " +MainActivity.score);

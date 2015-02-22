@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Created by yves on 22/02/15.
- */
+// */
 //public class RewardList extends ListActivity {
 //
 //    @Override
