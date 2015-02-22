@@ -13,7 +13,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Game Over! Stay Healthy and watch the Calories!"
         android:id="@+id/gameOverText"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="35dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -34,5 +34,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/gameOverText"
         android:layout_alignEnd="@+id/gameOverText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/scoreText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

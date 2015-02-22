@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
     int wrong = -1;
 
     int food1, food2;
-    int score = 0;
+    static int score = 0;
     static int lives = 10;
     Reward reward;
     static int count;
