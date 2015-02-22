@@ -30,9 +30,10 @@ public class MainActivity extends ActionBarActivity {
 
     int food1, food2;
     int score = 0;
-    int lives = 10;
+    static int lives = 10;
     Reward reward;
     static int count;
+    int lifeRewardCount;
 
 
     Random randomNumber1 = new Random();
@@ -94,6 +95,10 @@ public class MainActivity extends ActionBarActivity {
                     checkImage.setVisibility(View.VISIBLE);
                     checkImage.postDelayed(hide3, 2000);
 
+                    lifeRewardCount++;
+                    rewardLife(lifeRewardCount);
+
+
                 } else {
                     score -= 100;
                     lives -= 1;
@@ -105,10 +110,6 @@ public class MainActivity extends ActionBarActivity {
 
 
                 setCalorie();
-                calorieText1.setVisibility(View.VISIBLE);
-                calorieText2.setVisibility(View.VISIBLE);
-                calorieText1.postDelayed(hide1, 2000);
-                calorieText2.postDelayed(hide2, 2000);
                 updateFood();
                 reward.upgrade(count);
             }
@@ -123,6 +124,9 @@ public class MainActivity extends ActionBarActivity {
                     checkImage.setAlpha(255);
                     checkImage.setVisibility(View.VISIBLE);
                     checkImage.postDelayed(hide3, 2000);
+
+                    lifeRewardCount++;
+                    rewardLife(lifeRewardCount);
                 } else {
                     score -= 100;
                     lives -= 1;
@@ -132,15 +136,23 @@ public class MainActivity extends ActionBarActivity {
                     crossImage.postDelayed(hide4, 2000);
                 }
                 setCalorie();
-                calorieText1.setVisibility(View.VISIBLE);
-                calorieText2.setVisibility(View.VISIBLE);
-                calorieText1.postDelayed(hide1, 2000);
-                calorieText2.postDelayed(hide2, 2000);
+
                 updateFood();
                 reward.upgrade(count);
 
             }
         });
+    }
+
+    public void rewardLife(int lifeRewardCount) {
+
+            if (lifeRewardCount == 5) {
+                lives++;
+                this.lifeRewardCount = 0;
+
+                Toast.makeText(getBaseContext(), "Yay! You gained a life!", Toast.LENGTH_SHORT).show();
+            }
+
     }
 
     Runnable hide1 = new Runnable() {
@@ -176,14 +188,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void setCalorie(){
-            calorieText1.setText(foodList.get(food1).getCalorie()+"");
-            calorieText2.setText(foodList.get(food2).getCalorie()+"");
+        calorieText1.setText(foodList.get(food1).getCalorie()+"");
+        calorieText2.setText(foodList.get(food2).getCalorie()+"");
+        calorieText1.setVisibility(View.VISIBLE);
+        calorieText2.setVisibility(View.VISIBLE);
+        calorieText1.postDelayed(hide1, 2000);
+        calorieText2.postDelayed(hide2, 2000);
+
     }
 
-    public void resetCalorie() {
-        calorieText1.setText("");
-        calorieText2.setText("");
-    }
 
     public void updateFood() {
         food1 = randomNumber1.nextInt(foodList.size() - 1);
@@ -263,10 +276,6 @@ public class MainActivity extends ActionBarActivity {
 
             updateFood();
         }
-
-
-
-
 
 
         return super.onOptionsItemSelected(item);
