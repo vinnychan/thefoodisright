@@ -36,7 +36,7 @@ public class Gameover extends ActionBarActivity{
         creditsButton = (RadioButton) findViewById(R.id.creditsButton);
 
         scoreText.setText("Good Job, your score was " +MainActivity.score);
-        highScoreText.setText("Your best was " +MainActivity.highScore);
+        highScoreText.setText("Your best was " +MainActivity.highScore+" and you obtained " + Reward.status + " Status!!!");
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
