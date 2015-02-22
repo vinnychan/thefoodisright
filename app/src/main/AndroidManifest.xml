@@ -36,6 +36,9 @@
             android:name=".Credits"
             android:screenOrientation="sensorLandscape" >
         </activity>
+        <service
+            android:name=".BackgroundSoundService" >
+        </service>
     </application>
 
 </manifest>
