@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
     int food1, food2;
     static int score = 0;
     static int lives = 10;
+    static int highScore;
     Reward reward;
     static int count;
     int lifeRewardCount;
@@ -108,7 +109,7 @@ public class MainActivity extends ActionBarActivity {
                     crossImage.setVisibility(View.VISIBLE);
                     crossImage.postDelayed(hide4, 2000);
                 }
-
+                checkHighScore();
                 checkGameOver();
                 setCalorie();
                 updateFood();
@@ -136,6 +137,7 @@ public class MainActivity extends ActionBarActivity {
                     crossImage.setVisibility(View.VISIBLE);
                     crossImage.postDelayed(hide4, 2000);
                 }
+                checkHighScore();
                 checkGameOver();
                 setCalorie();
                 updateFood();
@@ -143,6 +145,12 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+    }
+
+    public void checkHighScore() {
+        if (score > highScore) {
+            highScore = score;
+        }
     }
 
     public void checkGameOver(){
