@@ -53,8 +53,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        svc=new Intent(this, BackgroundSoundService.class);
-        startService(svc);
+
+
 
         foodButton1 = (ImageButton) findViewById(R.id.foodButton1);
         foodButton2 = (ImageButton) findViewById(R.id.foodButton2);
@@ -107,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
 
 
                 } else {
-                    score -= 100;
+
                     lives -= 1;
                     soundPool.play(wrong, 1, 1, 0, 0, 1);
                     crossImage.setAlpha(255);
@@ -135,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
                     rewardLife(lifeRewardCount);
                     reward.upgrade(count);
                 } else {
-                    score -= 100;
+
                     lives -= 1;
                     soundPool.play(wrong, 1, 1, 0, 0, 1);
                     crossImage.setAlpha(255);
@@ -158,9 +158,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void checkGameOver(){
-        if (lives==0){
+        if (lives < 1){
             Intent i = new Intent(MainActivity.this, Gameover.class);
-            stopService(svc);
+
             startActivity(i);
             finish();
         }
