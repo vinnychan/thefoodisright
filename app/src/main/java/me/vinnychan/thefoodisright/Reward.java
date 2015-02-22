@@ -16,7 +16,7 @@ public class Reward extends MainActivity {
             "pineapple", "papaya","durian", "mangosteen", "WATERMELON", "DRAGONFRUIT"};
 
     static String status = statuses[0];
-    static int awards = 1;
+    static ArrayList<String> awards = new ArrayList<String>();
 
 
     public void upgrade(int count) {
@@ -24,13 +24,13 @@ public class Reward extends MainActivity {
             int n = (count/5);
             status = statuses[n];
             MainActivity.setStatusText("You are a " + status);
-            awards ++;
+            awards.add(0, status);
         } else
 
         if (count == 90) {
             status = statuses[18];
             MainActivity.setStatusText("YOU ARE THE LEGENDARY" + status);
-            awards ++;
+            awards.add(0, status);
         }
     }
 

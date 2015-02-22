@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by yves on 21/02/15.
  */
@@ -45,14 +47,14 @@ public class Gameover extends ActionBarActivity{
 
         scoreText.setText("Good Job, your score was " +MainActivity.score);
         highScoreText.setText("Your best was " +MainActivity.highScore+" and you obtained " + Reward.status + " Status!!!");
-        rewardsText.setText("You collected "+ Reward.awards +" out of"+ Reward.statuses.length +" fruits");
+        rewardsText.setText("You collected "+ Reward.awards.size() +" out of"+ Reward.statuses.length +" fruits");
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.lives = 10;
                 MainActivity.score = 0;
                 MainActivity.count = 0;
-                Reward.awards = 1;
+                Reward.awards = new ArrayList<String>();
                 Intent i = new Intent(Gameover.this, MainActivity.class);
                 startActivity(i);
                 finish();
@@ -60,14 +62,7 @@ public class Gameover extends ActionBarActivity{
             }
         });
 
-//        rewardsButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent i = new Intent(Gameover.this, RewardList.class);
-//                startActivity(i);
-//                finish();
-//
-//            }
-//        });
+
 
         creditsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
