@@ -28,6 +28,7 @@ public class Credits extends ActionBarActivity {
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.lives = 10;
+                MainActivity.score = 0;
                 Intent i = new Intent(Credits.this, MainActivity.class);
                 startActivity(i);
                 finish();

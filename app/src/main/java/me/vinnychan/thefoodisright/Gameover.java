@@ -13,6 +13,7 @@ import android.widget.TextView;
  */
 public class Gameover extends ActionBarActivity{
     TextView gameOverText;
+    TextView scoreText;
     RadioButton restartButton;
     RadioButton creditsButton;
 
@@ -24,12 +25,18 @@ public class Gameover extends ActionBarActivity{
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/BradBunR.ttf");
         gameOverText.setTypeface(face);
 
+        scoreText = (TextView) findViewById(R.id.scoreText);
+        scoreText.setTypeface(face);
+
         restartButton = (RadioButton) findViewById(R.id.restartButton);
         creditsButton = (RadioButton) findViewById(R.id.creditsButton);
+
+        scoreText.setText("Good Job, your score was " +MainActivity.score);
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.lives = 10;
+                MainActivity.score = 0;
                 Intent i = new Intent(Gameover.this, MainActivity.class);
                 startActivity(i);
                 finish();
