@@ -30,10 +30,15 @@ public class MainActivity extends ActionBarActivity {
 
     int food1, food2;
     int score = 0;
+    int lives = 10;
+    Reward reward;
+    static int count;
+
 
     Random randomNumber1 = new Random();
     Random randomNumber2 = new Random();
-    TextView foodText1, foodText2, scoreText, calorieText1, calorieText2;
+    TextView foodText1, foodText2, scoreText, calorieText1, calorieText2, livesText;
+    static TextView statusText;
 
     InputStream inputStream;
     CSVFile csvFile;
@@ -50,10 +55,13 @@ public class MainActivity extends ActionBarActivity {
         foodText1 = (TextView) findViewById(R.id.foodText1);
         foodText2 = (TextView) findViewById(R.id.foodText2);
         scoreText = (TextView) findViewById(R.id.scoreText);
+        livesText = (TextView) findViewById(R.id.livesText);
         calorieText1 = (TextView) findViewById(R.id.calorieText1);
         calorieText2 = (TextView) findViewById(R.id.calorieText2);
         checkImage = (ImageView) findViewById(R.id.checkImage);
         crossImage = (ImageView) findViewById(R.id.crossImage);
+        statusText = (TextView) findViewById(R.id.statusText);
+        reward = new Reward();
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
@@ -74,12 +82,13 @@ public class MainActivity extends ActionBarActivity {
         foodList = csvFile.read();
 
         updateFood();
+        setStatusText("You are a grape");
 
         foodButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (foodList.get(food1).getCalorie() < foodList.get(food2).getCalorie()) {
                     score += 100;
-
+                    count++;
                     soundPool.play(correct, 1, 1, 0, 0, 1);
                     checkImage.setAlpha(255);
                     checkImage.setVisibility(View.VISIBLE);
@@ -87,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
 
                 } else {
                     score -= 100;
+                    lives -= 1;
                     soundPool.play(wrong, 1, 1, 0, 0, 1);
                     crossImage.setAlpha(255);
                     crossImage.setVisibility(View.VISIBLE);
@@ -100,6 +110,7 @@ public class MainActivity extends ActionBarActivity {
                 calorieText1.postDelayed(hide1, 2000);
                 calorieText2.postDelayed(hide2, 2000);
                 updateFood();
+                reward.upgrade(count);
             }
         });
 
@@ -107,12 +118,14 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 if (foodList.get(food2).getCalorie() < foodList.get(food1).getCalorie()) {
                     score += 100;
+                    count++;
                     soundPool.play(correct, 1, 1, 0, 0, 1);
                     checkImage.setAlpha(255);
                     checkImage.setVisibility(View.VISIBLE);
                     checkImage.postDelayed(hide3, 2000);
                 } else {
                     score -= 100;
+                    lives -= 1;
                     soundPool.play(wrong, 1, 1, 0, 0, 1);
                     crossImage.setAlpha(255);
                     crossImage.setVisibility(View.VISIBLE);
@@ -124,6 +137,8 @@ public class MainActivity extends ActionBarActivity {
                 calorieText1.postDelayed(hide1, 2000);
                 calorieText2.postDelayed(hide2, 2000);
                 updateFood();
+                reward.upgrade(count);
+
             }
         });
     }
@@ -156,6 +171,9 @@ public class MainActivity extends ActionBarActivity {
         }
     };
 
+    public static void setStatusText(String s) {
+        statusText.setText(s);
+    }
 
     public void setCalorie(){
             calorieText1.setText(foodList.get(food1).getCalorie()+"");
@@ -178,6 +196,7 @@ public class MainActivity extends ActionBarActivity {
         foodText1.setText(foodList.get(food1).getName());
         foodText2.setText(foodList.get(food2).getName());
         scoreText.setText("" + score);
+        livesText.setText("Lives: "+lives);
     }
 
 
@@ -219,7 +238,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (id == R.id.beverage_select) {
-            Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "You have selected: Beverages", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.beverages);
             csvFile = new CSVFile(inputStream);
             foodList = csvFile.read();
@@ -228,7 +247,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (id == R.id.fastfood_select) {
-            Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "You have selected: Fast Foods", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.fastfoods);
             csvFile = new CSVFile(inputStream);
             foodList = csvFile.read();
@@ -237,7 +256,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (id == R.id.baked_select) {
-            Toast.makeText(getBaseContext(), "You have selected: Snacks", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "You have selected: Baked Foods", Toast.LENGTH_SHORT).show();
             inputStream = getResources().openRawResource(R.raw.baked);
             csvFile = new CSVFile(inputStream);
             foodList = csvFile.read();

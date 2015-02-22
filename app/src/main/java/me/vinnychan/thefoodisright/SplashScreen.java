@@ -28,7 +28,7 @@ public class SplashScreen extends ActionBarActivity{
             @Override
             public void run() {
                 try {
-                    sleep(15000);
+                    sleep(5000);
                     Intent i = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(i);
                     finish();
