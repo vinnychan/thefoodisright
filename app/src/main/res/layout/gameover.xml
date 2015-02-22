@@ -52,4 +52,24 @@
         android:layout_above="@+id/restartButton"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/rewardsText"
+        android:layout_below="@+id/gameOverText"
+        android:layout_alignLeft="@+id/highScoreText"
+        android:layout_alignStart="@+id/highScoreText" />
+
+    <!--<RadioButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Your Fruits"-->
+        <!--android:id="@+id/rewardsButton"-->
+        <!--android:layout_below="@+id/gameOverText"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="51dp" />-->
+
 </RelativeLayout>
