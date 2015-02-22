@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
 
     public List<Food> foodList;
     ImageButton foodButton1, foodButton2;
+    ImageView checkImage, crossImage;
 
     SoundPool soundPool;
     int correct = -1;
@@ -50,6 +52,8 @@ public class MainActivity extends ActionBarActivity {
         scoreText = (TextView) findViewById(R.id.scoreText);
         calorieText1 = (TextView) findViewById(R.id.calorieText1);
         calorieText2 = (TextView) findViewById(R.id.calorieText2);
+        checkImage = (ImageView) findViewById(R.id.checkImage);
+        crossImage = (ImageView) findViewById(R.id.crossImage);
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
@@ -60,6 +64,9 @@ public class MainActivity extends ActionBarActivity {
         calorieText1.setTypeface(face);
         calorieText2.setTypeface(face);
         scoreText.setTypeface(face);
+
+        checkImage.setAlpha(0);
+        crossImage.setAlpha(0);
 
 
         inputStream = getResources().openRawResource(R.raw.legumes);
@@ -74,10 +81,16 @@ public class MainActivity extends ActionBarActivity {
                     score += 100;
 
                     soundPool.play(correct, 1, 1, 0, 0, 1);
+                    checkImage.setAlpha(255);
+                    checkImage.setVisibility(View.VISIBLE);
+                    checkImage.postDelayed(hide3, 2000);
 
                 } else {
                     score -= 100;
                     soundPool.play(wrong, 1, 1, 0, 0, 1);
+                    crossImage.setAlpha(255);
+                    crossImage.setVisibility(View.VISIBLE);
+                    crossImage.postDelayed(hide4, 2000);
                 }
 
 
@@ -95,9 +108,15 @@ public class MainActivity extends ActionBarActivity {
                 if (foodList.get(food2).getCalorie() < foodList.get(food1).getCalorie()) {
                     score += 100;
                     soundPool.play(correct, 1, 1, 0, 0, 1);
+                    checkImage.setAlpha(255);
+                    checkImage.setVisibility(View.VISIBLE);
+                    checkImage.postDelayed(hide3, 2000);
                 } else {
                     score -= 100;
                     soundPool.play(wrong, 1, 1, 0, 0, 1);
+                    crossImage.setAlpha(255);
+                    crossImage.setVisibility(View.VISIBLE);
+                    crossImage.postDelayed(hide4, 2000);
                 }
                 setCalorie();
                 calorieText1.setVisibility(View.VISIBLE);
@@ -120,6 +139,20 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public void run() {
             calorieText2.setVisibility(View.GONE);
+        }
+    };
+
+    Runnable hide3 = new Runnable() {
+        @Override
+        public void run() {
+            checkImage.setVisibility(View.GONE);
+        }
+    };
+
+    Runnable hide4 = new Runnable() {
+        @Override
+        public void run() {
+            crossImage.setVisibility(View.GONE);
         }
     };
 
