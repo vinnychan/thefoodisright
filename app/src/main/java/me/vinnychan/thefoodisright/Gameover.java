@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class Gameover extends ActionBarActivity{
     TextView gameOverText;
     TextView scoreText;
+    TextView highScoreText;
     RadioButton restartButton;
     RadioButton creditsButton;
 
@@ -28,10 +29,14 @@ public class Gameover extends ActionBarActivity{
         scoreText = (TextView) findViewById(R.id.scoreText);
         scoreText.setTypeface(face);
 
+        highScoreText = (TextView) findViewById(R.id.highScoreText);
+        highScoreText.setTypeface(face);
+
         restartButton = (RadioButton) findViewById(R.id.restartButton);
         creditsButton = (RadioButton) findViewById(R.id.creditsButton);
 
         scoreText.setText("Good Job, your score was " +MainActivity.score);
+        highScoreText.setText("Your best was " +MainActivity.highScore);
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
