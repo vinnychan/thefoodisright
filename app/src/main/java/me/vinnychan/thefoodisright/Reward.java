@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class Reward extends MainActivity {
 
-    static String[] statuses= {"grape","tomato", "blueberry", "papaya", "lychee","coconut",
-            "longan", "jack fruit", "star fruit", "guava", "kumquat", "mango", "passion fruit",
-            "pineapple", "papaya","durian", "mangosteen", "WATERMELON", "DRAGONFRUIT"};
+    static String[] statuses= {"broccoli", "cucumber", "onion", "tomato",
+            "pepper", "avocado", "apple", "orange", "lemon", "pear", "kiwi", "watermelon","coconut",
+            "peach", "strawberry","banana","pomegranate", "passion fruit", "guava", "STARFRUIT"};
 
     static String status = statuses[0];
     static ArrayList<String> awards = new ArrayList<String>();
@@ -23,12 +23,12 @@ public class Reward extends MainActivity {
         if ((count%5 == 0) && (count<=85)){
             int n = (count/5);
             status = statuses[n];
-            MainActivity.setStatusText("You are a " + status);
+            MainActivity.setStatusText("You are the " + status);
             awards.add(0, status);
         } else
 
-        if (count == 90) {
-            status = statuses[18];
+        if (count == 95) {
+            status = statuses[19];
             MainActivity.setStatusText("YOU ARE THE LEGENDARY" + status);
             awards.add(0, status);
         }
