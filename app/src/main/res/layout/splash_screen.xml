@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_splash"
+    android:background="@drawable/background_splash2"
     tools:context=".SplashScreen">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/splash_title"
+        android:id="@+id/splashTitle" />
 </LinearLayout>

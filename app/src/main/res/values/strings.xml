@@ -9,5 +9,6 @@
     <string name="beverages">Beverages</string>
     <string name="fastfood">Fast Food</string>
     <string name="baked">Baked Foods</string>
+    <string name="splash_title">The Food is Right</string>
 
 </resources>
