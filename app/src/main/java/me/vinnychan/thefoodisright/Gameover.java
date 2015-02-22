@@ -29,45 +29,18 @@ public class Gameover extends ActionBarActivity{
 
     //List<ImageView> fruits = new ArrayList<ImageView>();
 
-//    ArrayList<ImageView> fruits = new ArrayList<ImageView>(Arrays.asList(broccoliImage, cucumberImage, onionImage, tomatoImage, pepperImage, avacadoImage,
-//            appleImage, orangeImage, lemonImage, pearImage, kiwiImage, watermelonImage, coconutImage, peachImage,
-//            strawberryImage, bananaImage, pomegranateImage, passionfruitImage, papayaImage, starfruitImage));
+    ArrayList<ImageView> fruits;
 
-    ImageView[] fruits = { broccoliImage, cucumberImage, onionImage, tomatoImage, pepperImage, avacadoImage,
-            appleImage, orangeImage, lemonImage, pearImage, kiwiImage, watermelonImage, coconutImage, peachImage,
-            strawberryImage, bananaImage, pomegranateImage, passionfruitImage, papayaImage, starfruitImage};
+    public void initialFruits() {
+        for (ImageView v : fruits) {
+            v.setVisibility(View.INVISIBLE);
 
+        }
+    }
 
-
-
-   // RadioButton rewardsButton;
-
-
-//    public void initialFruits() {
-//        for (ImageView v : fruits) {
-//            v.setVisibility(View.INVISIBLE);
-//
-//        }
-//    }
-//
-//    public void showFruits() {
-//        for (int i = 0; i < Reward.awards.size(); i++) {
-//            fruits[i].setVisibility(View.VISIBLE);
-//        }
-//    }
-
-    public void showFruits(int n) {
-        switch(n) {
-            case 1: broccoliImage.setVisibility(View.VISIBLE);
-
-            case 2: cucumberImage.setVisibility(View.VISIBLE);
-
-            case 3: onionImage.setVisibility(View.VISIBLE);
-
-            case 4: tomatoImage.setVisibility(View.VISIBLE);
-                break;
-
-
+    public void showFruits() {
+        for (int i = 0; i < Reward.awards.size(); i++) {
+            fruits.get(i).setVisibility(View.VISIBLE);
         }
     }
 
@@ -97,31 +70,12 @@ public class Gameover extends ActionBarActivity{
         papayaImage = (ImageView) findViewById(R.id.papayaImage);
         starfruitImage = (ImageView) findViewById(R.id.starfruitImage);
 
-//        initialFruits();
-
-        broccoliImage.setVisibility(View.INVISIBLE);
-        cucumberImage.setVisibility(View.INVISIBLE);
-        onionImage.setVisibility(View.INVISIBLE);
-        tomatoImage.setVisibility(View.INVISIBLE);
-        pepperImage.setVisibility(View.INVISIBLE);
-        avacadoImage.setVisibility(View.INVISIBLE);
-        appleImage.setVisibility(View.INVISIBLE);
-        orangeImage.setVisibility(View.INVISIBLE);
-        lemonImage.setVisibility(View.INVISIBLE);
-        pearImage.setVisibility(View.INVISIBLE);
-
-        kiwiImage.setVisibility(View.INVISIBLE);
-        watermelonImage.setVisibility(View.INVISIBLE);
-        coconutImage.setVisibility(View.INVISIBLE);
-        peachImage.setVisibility(View.INVISIBLE);
-        strawberryImage.setVisibility(View.INVISIBLE);
-        bananaImage.setVisibility(View.INVISIBLE);
-        pomegranateImage.setVisibility(View.INVISIBLE);
-        passionfruitImage.setVisibility(View.INVISIBLE);
-        papayaImage.setVisibility(View.INVISIBLE);
-        starfruitImage.setVisibility(View.INVISIBLE);
+        fruits = new ArrayList<ImageView>(Arrays.asList(broccoliImage, cucumberImage, onionImage, tomatoImage, pepperImage, avacadoImage,
+                appleImage, orangeImage, lemonImage, pearImage, kiwiImage, watermelonImage, coconutImage, peachImage,
+                strawberryImage, bananaImage, pomegranateImage, passionfruitImage, papayaImage, starfruitImage));
 
 
+        initialFruits();
 
         gameOverText = (TextView) findViewById(R.id.gameOverText);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/BradBunR.ttf");
@@ -143,9 +97,9 @@ public class Gameover extends ActionBarActivity{
 
         scoreText.setText("Good Job, your score was " +MainActivity.score);
         highScoreText.setText("Your best was " +MainActivity.highScore+" and you obtained " + Reward.status + " Status!!!");
-        rewardsText.setText("You collected "+ Reward.awards.size() +" out of"+ Reward.statuses.length +" fruits");
+        rewardsText.setText("You collected "+ Reward.awards.size() +" out of "+ Reward.statuses.length +" fruits");
 
-        showFruits(Reward.awards.size());
+        showFruits();
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
