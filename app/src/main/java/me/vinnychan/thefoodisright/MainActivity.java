@@ -99,6 +99,7 @@ public class MainActivity extends ActionBarActivity {
 
                     lifeRewardCount++;
                     rewardLife(lifeRewardCount);
+                    reward.upgrade(count);
 
 
                 } else {
@@ -113,7 +114,6 @@ public class MainActivity extends ActionBarActivity {
                 checkGameOver();
                 setCalorie();
                 updateFood();
-                reward.upgrade(count);
             }
         });
 
@@ -129,6 +129,7 @@ public class MainActivity extends ActionBarActivity {
 
                     lifeRewardCount++;
                     rewardLife(lifeRewardCount);
+                    reward.upgrade(count);
                 } else {
                     score -= 100;
                     lives -= 1;
@@ -141,7 +142,6 @@ public class MainActivity extends ActionBarActivity {
                 checkGameOver();
                 setCalorie();
                 updateFood();
-                reward.upgrade(count);
 
             }
         });
