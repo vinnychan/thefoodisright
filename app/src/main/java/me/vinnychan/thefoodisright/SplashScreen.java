@@ -32,6 +32,8 @@ public class SplashScreen extends ActionBarActivity{
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         open = soundPool.load(this, R.raw.open, 1);
 
+        soundPool.play(open, 1, 1, 0, 0, 1);
+
         Thread startTimer = new Thread(){
             @Override
             public void run() {

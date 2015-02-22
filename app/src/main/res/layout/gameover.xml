@@ -19,9 +19,9 @@
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Press to Restart!"
+        android:text="Restart"
         android:id="@+id/restartButton"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Credits"
         android:id="@+id/creditsButton"
-        android:layout_alignTop="@+id/restartButton"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
