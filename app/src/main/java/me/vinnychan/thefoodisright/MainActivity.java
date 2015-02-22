@@ -1,5 +1,6 @@
 package me.vinnychan.thefoodisright;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -108,7 +109,7 @@ public class MainActivity extends ActionBarActivity {
                     crossImage.postDelayed(hide4, 2000);
                 }
 
-
+                checkGameOver();
                 setCalorie();
                 updateFood();
                 reward.upgrade(count);
@@ -135,13 +136,21 @@ public class MainActivity extends ActionBarActivity {
                     crossImage.setVisibility(View.VISIBLE);
                     crossImage.postDelayed(hide4, 2000);
                 }
+                checkGameOver();
                 setCalorie();
-
                 updateFood();
                 reward.upgrade(count);
 
             }
         });
+    }
+
+    public void checkGameOver(){
+        if (lives==0){
+            Intent i = new Intent(MainActivity.this, Gameover.class);
+            startActivity(i);
+            finish();
+        }
     }
 
     public void rewardLife(int lifeRewardCount) {
