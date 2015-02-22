@@ -85,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
         foodList = csvFile.read();
 
         updateFood();
-        setStatusText("You are a grape");
+        setStatusText("You are a " +Reward.statuses[0]);
 
         foodButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
